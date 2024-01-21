@@ -1,3 +1,5 @@
+import React from "react";
+
 interface PlayProps {
   readonly userBatting: boolean;
   readonly handlePlay: (event: any) => void;
@@ -7,6 +9,7 @@ interface PlayProps {
   readonly firstInning: boolean;
   readonly gameOver: boolean;
   readonly message: string;
+  readonly arr: number[];
 }
 
 export default function Play({
@@ -18,15 +21,18 @@ export default function Play({
   firstInning,
   gameOver,
   message,
+  arr,
 }: PlayProps) {
   return (
-    <div>
-      <p>Play</p>
-      <p>{userBatting ? "You are batting" : "You are bowling"}</p>
+    <div className="flex w-full flex-col h-screen p-4 items-center">
+      <p className="text-xl">Play</p>
+      <p className="text-xl font-bold mb-4">
+        {userBatting ? "You are batting" : "You are bowling"}
+      </p>
       <div className="flex gap-4">
-        {["1", "2", "3", "4", "5", "6"].map((item, index) => (
+        {arr.map((item, index) => (
           <button
-            className="text-black flex gap-4 bg-slate-400 rounded-full px-4 py-2 items-center justify-center"
+            className="flex gap-4 bg-green-400 text-white rounded-full px-4 py-2 items-center justify-center"
             value={item}
             key={item}
             onClick={handlePlay}
@@ -35,12 +41,42 @@ export default function Play({
           </button>
         ))}
       </div>
-      <p>Computer Score: {computerScore}</p>
-      <p>Your Score: {userScore}</p>
-      <p>Balls: {balls}</p>
-      <p>First Inning: {firstInning ? "Yes" : "No"}</p>
-      <p>Game Over: {gameOver ? "Yes" : "No"}</p>
-      <p>Message: {message}</p>
+      <div className="flex flex-col absolute bottom-0 left-0 w-full pb-4 px-4 text-lg">
+        <table className="table-auto">
+          <tbody>
+            <tr className="border-b-2">
+              <td>Computer Score:</td>
+              <td>{computerScore}</td>
+            </tr>
+            <tr className="border-b-2">
+              <td>Your Score:</td>
+              <td>{userScore}</td>
+            </tr>
+            <tr className="border-b-2">
+              <td>Balls:</td>
+              <td>{balls}</td>
+            </tr>
+            <tr className="border-b-2">
+              <td>First Inning:</td>
+              <td>{firstInning ? "Yes" : "No"}</td>
+            </tr>
+            <tr>
+              <td>Game Over:</td>
+              <td>{gameOver ? "Yes" : "No"}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
+// <p>Computer Score: {computerScore}</p>
+// <p>Your Score: {userScore}</p>
+// <p>Balls: {balls}</p>
+// <p>First Inning: {firstInning ? "Yes" : "No"}</p>
+// <p>Game Over: {gameOver ? "Yes" : "No"}</p>
+// <p>Message: {message}</p>
+//       </div>
+//     </div>
+//   );
+// }
