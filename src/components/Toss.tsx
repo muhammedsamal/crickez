@@ -9,12 +9,14 @@ export default function Toss({ handleSubmit }: TossProps) {
     <div className="flex justify-center items-center">
       <button
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
+        value={"Heads"}
         onClick={handleSubmit}
       >
         Heads
       </button>
       <button
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        value={"Tails"}
         onClick={handleSubmit}
       >
         Tails

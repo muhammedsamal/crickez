@@ -6,6 +6,7 @@ interface PlayProps {
   readonly balls: number;
   readonly firstInning: boolean;
   readonly gameOver: boolean;
+  readonly message: string;
 }
 
 export default function Play({
@@ -16,6 +17,7 @@ export default function Play({
   balls,
   firstInning,
   gameOver,
+  message,
 }: PlayProps) {
   return (
     <div>
@@ -26,7 +28,7 @@ export default function Play({
           <button
             className="text-black flex gap-4 bg-slate-400 rounded-full px-4 py-2 items-center justify-center"
             value={item}
-            key={index}
+            key={item}
             onClick={handlePlay}
           >
             {item}
@@ -38,6 +40,7 @@ export default function Play({
       <p>Balls: {balls}</p>
       <p>First Inning: {firstInning ? "Yes" : "No"}</p>
       <p>Game Over: {gameOver ? "Yes" : "No"}</p>
+      <p>Message: {message}</p>
     </div>
   );
 }
