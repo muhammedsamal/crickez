@@ -23,8 +23,11 @@ export default function Play({
   message,
   arr,
 }: PlayProps) {
+  const style =
+    "border border-white px-4 py-2 rounded-full text-white font-bold";
+
   return (
-    <div className="flex w-full flex-col h-screen p-4 items-center">
+    <div className="flex w-full flex-col h-screen p-4 items-center justify-center -mt-20">
       <p className="text-xl">Play</p>
       <p className="text-xl font-bold mb-4">
         {userBatting ? "You are batting" : "You are bowling"}
@@ -32,7 +35,7 @@ export default function Play({
       <div className="flex gap-4">
         {arr.map((item, index) => (
           <button
-            className="flex gap-4 bg-green-400 text-white rounded-full px-4 py-2 items-center justify-center"
+            className={style}
             value={item}
             key={item}
             onClick={handlePlay}

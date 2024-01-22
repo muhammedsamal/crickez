@@ -9,10 +9,12 @@ export default function Choose({
   setChoosed,
   setPlay,
 }: ChooseProps) {
+  const style =
+    "cursor-pointer bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-md";
   return (
-    <div>
+    <div className="h-screen flex flex-col justify-center gap-4">
       <input
-        className="cursor-pointer mr-2"
+        className={style}
         type="button"
         value="Batting"
         onClick={() => {
@@ -22,7 +24,7 @@ export default function Choose({
         }}
       />
       <input
-        className="cursor-pointer mr-2"
+        className={style}
         type="button"
         value="Bowling"
         onClick={() => {

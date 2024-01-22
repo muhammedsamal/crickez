@@ -5,9 +5,14 @@ interface GameOverProps {
 
 export default function GameOver({ message, restart }: GameOverProps) {
   return (
-    <div>
+    <div className="flex h-screen flex-col items-center justify-center font-bold">
       <h1>{message}</h1>
-      <button onClick={restart}>Play Again</button>
+      <button
+        className="border border-white px-4 py-2 rounded-md mt-4 text-white"
+        onClick={restart}
+      >
+        Play Again
+      </button>
     </div>
   );
 }
