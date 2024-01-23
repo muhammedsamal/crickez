@@ -4,5 +4,6 @@
 
 
 body {
-  background-color: #22c55e;
+  height: 100vh;
+  overflow: hidden;
 }

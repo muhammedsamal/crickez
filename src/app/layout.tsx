@@ -19,9 +19,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className={`h-screen w-screen overflow-hidden ${inter.className}`}>
-        {children}
-      </body>
+      <body className={`${inter.className}`}>{children}</body>
     </html>
   );
 }
