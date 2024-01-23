@@ -17,7 +17,12 @@ export default function Landing() {
   return (
     <div className="flex flex-col bg-green-200 w-full items-center justify-between h-screen">
       <div className="w-full h-[50vh] relative">
-        <Image src="/hero.png" layout="fill" objectFit="contain" alt="hero" />
+        <Image
+          src="/cricket.svg"
+          layout="fill"
+          objectFit="contain"
+          alt="hero"
+        />
       </div>
       <div className="bg-white h-1/2 w-full flex flex-col p-4 justify-between">
         <h1 className="text-6xl md:text-8xl leading-normal">{title}</h1>

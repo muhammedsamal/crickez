@@ -139,8 +139,8 @@ export default function Page() {
   }
 
   return (
-    <div className="flex items-center justify-center p-4">
-      <div>
+    <div className="flex items-center justify-center w-full h-screen bg-green-300">
+      <div className="w-full h-screen bg-green-300">
         {!tossed && <Toss handleSubmit={handleSubmit} />}
         {tossed && !choosed && toss == "You won the toss" && (
           <Choose

@@ -1,13 +1,18 @@
 import React, { MouseEventHandler } from "react";
+import Image from "next/image";
 
 interface TossProps {
   readonly handleSubmit: MouseEventHandler<HTMLButtonElement>;
 }
 
 export default function Toss({ handleSubmit }: TossProps) {
-  const style = "border border-white px-4 py-2 rounded-md text-white font-bold";
+  const style = "bg-green-400 py-4 text-xl rounded-md w-full shadow-md mb-4";
   return (
-    <div className="flex justify-center items-center h-screen w-full gap-4">
+    <div className="flex flex-col items-center h-screen w-full px-14 py-10">
+      <h1 className="text-4xl mb-20">Call your Toss</h1>
+      <div className="w-full h-[25vh] relative mb-20">
+        <Image src="/toss.svg" layout="fill" objectFit="contain" alt="toss" />
+      </div>
       <button className={style} value={"Heads"} onClick={handleSubmit}>
         Heads
       </button>
