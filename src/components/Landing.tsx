@@ -24,8 +24,8 @@ export default function Landing() {
           alt="hero"
         />
       </div>
-      <div className="bg-white h-1/2 w-full flex flex-col p-4 justify-between">
-        <h1 className="text-6xl md:text-8xl leading-normal">{title}</h1>
+      <div className="bg-white h-1/2 w-full flex flex-col p-4">
+        <h1 className="text-4xl md:text-8xl leading-normal mb-8">{title}</h1>
         {!next && (
           <button onClick={handleSubmit} className={style}>
             Get Started

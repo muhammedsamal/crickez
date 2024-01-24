@@ -9,7 +9,7 @@ export default function Toss({ handleSubmit }: TossProps) {
   const style = "bg-green-400 py-4 text-xl rounded-md w-full shadow-md mb-4";
   return (
     <div className="flex flex-col items-center h-screen w-full px-14 py-10">
-      <h1 className="text-4xl mb-20">Call your Toss</h1>
+      <h1 className="text-3xl mb-20">Call your Toss</h1>
       <div className="w-full h-[25vh] relative mb-20">
         <Image src="/toss.svg" layout="fill" objectFit="contain" alt="toss" />
       </div>

@@ -139,8 +139,8 @@ export default function Page() {
   }
 
   return (
-    <div className="flex items-center justify-center w-full h-screen bg-green-300">
-      <div className="w-full h-screen bg-green-300">
+    <div className="flex items-center justify-center w-full h-screen bg-green-100">
+      <div className="w-full h-screen bg-green-200">
         {!tossed && <Toss handleSubmit={handleSubmit} />}
         {tossed && !choosed && toss == "You won the toss" && (
           <Choose
@@ -150,7 +150,7 @@ export default function Page() {
           />
         )}
         {choosed && toss == "You lost the toss" && (
-          <p className="text-lg">
+          <p className="text-3xl text-center mt-6">
             {userBatting
               ? "Computer won the toss and choose bowling"
               : "Computer won the toss and choose batting"}
