@@ -4,13 +4,14 @@ import Choose from "@/components/Choose";
 import GameOver from "@/components/GameOver";
 import Play from "@/components/Play";
 import Toss from "@/components/Toss";
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 import {
   generateToss,
   generateComputerChoice,
   generateComputerScore,
   shuffleArray,
 } from "@/utils";
+import Message from "@/components/Message";
 
 export default function Page() {
   const [tossed, setTossed] = useState(false); // to check if the toss is done
@@ -25,6 +26,14 @@ export default function Page() {
   const [gameOver, setGameOver] = useState(false);
   const [message, setMessage] = useState("");
   const [arr, setArr] = useState([1, 2, 3, 4, 5, 6]);
+  const [showMessage, setShowMessage] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowMessage(false);
+    }, 5000); // Hide after 5 seconds
+    return () => clearTimeout(timer); // Clear the timer if the component is unmounted
+  }, []);
 
   function restart() {
     setTossed(false);
@@ -53,6 +62,7 @@ export default function Page() {
       } else {
         setUserBatting(true);
       }
+      setShowMessage(true);
       setChoosed(true);
       setPlay(true);
     }
@@ -139,7 +149,7 @@ export default function Page() {
   }
 
   return (
-    <div className="flex items-center justify-center w-full h-screen bg-green-100">
+    <div className="flex items-center justify-center h-screen bg-green-100 lg:h-[90%] rounded-lg overflow-hidden shadow-md w-[480px]">
       <div className="w-full h-screen bg-green-200">
         {!tossed && <Toss handleSubmit={handleSubmit} />}
         {tossed && !choosed && toss == "You won the toss" && (
@@ -149,12 +159,11 @@ export default function Page() {
             setPlay={setPlay}
           />
         )}
-        {choosed && toss == "You lost the toss" && (
-          <p className="text-3xl text-center mt-6">
-            {userBatting
-              ? "Computer won the toss and choose bowling"
-              : "Computer won the toss and choose batting"}
-          </p>
+        {showMessage && userBatting && (
+          <Message message="computer choose bowl" />
+        )}
+        {showMessage && !userBatting && (
+          <Message message="computer choose to bat" />
         )}
         {play && (
           <Play

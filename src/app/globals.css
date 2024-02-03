@@ -5,5 +5,11 @@
 
 body {
   height: 100vh;
+  min-width: 320px;
   overflow: hidden;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  background-color: aliceblue;
 }

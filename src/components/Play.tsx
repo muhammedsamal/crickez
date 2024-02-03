@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import Message from "./Message";
 
 interface PlayProps {
   readonly userBatting: boolean;
@@ -26,6 +27,7 @@ export default function Play({
 }: PlayProps) {
   const [isClicked, setIsClicked] = useState(false);
   const [img, setImg] = useState("");
+  const [showMessage, setShowMessage] = useState(false);
 
   useEffect(() => {
     if (userBatting) {
@@ -37,6 +39,18 @@ export default function Play({
       setImg("/award.svg");
     }
   }, [userBatting, gameOver]);
+
+  useEffect(() => {
+    if (message) {
+      setShowMessage(true);
+      const timer = setTimeout(() => {
+        setShowMessage(false);
+      }, 5000); // Hide after 5 seconds
+
+      return () => clearTimeout(timer); // Clear the timer if the component is unmounted
+    }
+  }, [message]);
+
   const style =
     "px-4 py-2 rounded-full text-white font-bold bg-green-500 text-black shadow-md";
 
@@ -46,8 +60,8 @@ export default function Play({
 
   return (
     <div className="flex w-full flex-col h-screen p-4 items-center justify-center">
-      {/* <p className="text-2xl">Play</p> */}
-      <div className="w-full h-[20vh] -mt-14 relative  mb-4">
+      {showMessage && <Message message={message} />}
+      <div className="w-full h-[20vh] -mt-14 relative mb-4">
         <Image src={img} layout="fill" objectFit="contain" alt="hero" />
       </div>
       <p className="text-3xl mb-4">
@@ -88,23 +102,9 @@ export default function Play({
               <div className={td}>First Inning:</div>
               <div className={th}>{firstInning ? "Yes" : "No"}</div>
             </div>
-            <div className="flex justify-between ">
-              <div className={td}>Game Over:</div>
-              <div className={th}>{gameOver ? "Yes" : "No"}</div>
-            </div>
           </div>
         </div>
       </div>
     </div>
   );
 }
-// <p>Computer Score: {computerScore}</p>
-// <p>Your Score: {userScore}</p>
-// <p>Balls: {balls}</p>
-// <p>First Inning: {firstInning ? "Yes" : "No"}</p>
-// <p>Game Over: {gameOver ? "Yes" : "No"}</p>
-// <p>Message: {message}</p>
-//       </div>
-//     </div>
-//   );
-// }
